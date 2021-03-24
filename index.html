@@ -18,10 +18,11 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chenducl.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+    var CONFIG = {"hostname":"chenducl.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 <meta name="description" content="Fall 2021">
 <meta property="og:type" content="website">
@@ -231,7 +232,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 01:12:29" itemprop="dateModified" datetime="2021-03-24T01:12:29+08:00">2021-03-24</time>
+        <time title="Modified: 2021-03-24 22:06:23" itemprop="dateModified" datetime="2021-03-24T22:06:23+08:00">2021-03-24</time>
       </span>
 
   
@@ -246,7 +247,8 @@
     <div class="post-body" itemprop="articleBody">
           <blockquote class="blockquote-center">
 <p>Software for Network Services Project Assignment<br>
-2021 Fall</p>
+2021 Fall<br>
+Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/chenducl/SNS-Assignment-2021">GitHub</a></p>
 
 </blockquote>
 <div class="note "><ul>
@@ -255,37 +257,448 @@
 <li>10% on presentationof your report/page</li>
 </ul>
 </div>
-<div class="note primary"><h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<div class="note primary"><h2 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h2>
 </div>
 <div class="note "><p>What is the problem you are trying to solve and the general framework to solve it. 1 to 2 pages</p>
 </div>
 <p>The COVID-19 pandemic, one of the deadliest pandemics in history, was first identified in December 2019, and has influenced more than 180 countries in the world. Aiming at establishing effective policies to reduce the pandemic spread, massive efforts have been carried out by governments and researchers for the best synergy. Specifically, the capabilities of analyzing the transmission patterns and forecasting the trends of the pandemic allow the goverments to perform proper actions to inhibit its spread efficiently. Numerous time series methods have been proposed to forecast the COVID-19 cases<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, epidemiological trends<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, hospitalizations<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>, vaccine efficacy trials<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>, etc.</p>
-<p>In this assignment, we focus on forecasting COVID-19 cases and Google Trends. To obtain a comprehensive understanding of the pandemic trends, we collect diverse data sources, including the global cases, mobility, hospitilizations, medical care and vaccinations data.</p>
-<p>The use of neural networks enable us to develop a model that learns the inherent patterns in these past observations and then predict the future values with the trained model. Specifically, we implement long short-term memory (LSTM)<sup class="footnote-ref"><a href="#fn4" id="fnref4:1">[4:1]</a></sup> and transformer<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> models with different structures and hyperparameters settings for time series. To select the best fitting model from model candidates, various experiments have been conducted on deciding the best model structures and hyperparameters in our forcasting task.</p>
-<div class="note primary"><h2 id="data-sources"><a class="markdownIt-Anchor" href="#data-sources"></a> Data Sources</h2>
+<p>In this assignment, we focus on forecasting COVID-19 cases and Google Search Trends. To obtain a comprehensive understanding of the pandemic trends, we collect diverse data sources, including the global cases, mobility, hospitilizations, medical care and vaccinations data.</p>
+<p>The use of neural networks enable us to develop a model that learns the inherent patterns in these past observations and then predict the future values with the trained model. Specifically, we implement long short-term memory (LSTM)<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> and transformer<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> for time series modeling. To select the best fitting model from model candidates, various experiments have been conducted on deciding the optimal model structures and hyperparameters in our forcasting task.</p>
+<div class="note primary"><h2 id="2-dataset"><a class="markdownIt-Anchor" href="#2-dataset"></a> 2. Dataset</h2>
 </div>
+<div class="note "><h3 id="21-data-sources"><a class="markdownIt-Anchor" href="#21-data-sources"></a> 2.1. Data Sources</h3>
+</div>
+<h4 id="211-global-covid-19-cases-data-jhu-csse"><a class="markdownIt-Anchor" href="#211-global-covid-19-cases-data-jhu-csse"></a> 2.1.1. Global COVID-19 cases data: <a target="_blank" rel="noopener" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE</a></h4>
+<p>To leverage the history pandemic history in time series modeling, we first collect the past pandemic statistics, including confirme cases, recovered cases, deaths, active cases.</p>
+<h4 id="212-global-mobility-data-apple-mobility"><a class="markdownIt-Anchor" href="#212-global-mobility-data-apple-mobility"></a> 2.1.2. Global mobility data: <a target="_blank" rel="noopener" href="https://covid19.apple.com/mobility">Apple Mobility</a></h4>
+<p>Prior studies have demonstrated that COVID spreads rapidly through contact, and population mobility data partly reflects the contact between people and the impacts of social distancing policies<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>. Thus, aside from the use of past COVID-19 cases data, we introduce mobility data as well, to serve as a possible proxy for human interactions. The global mobility data is provided by <a target="_blank" rel="noopener" href="https://covid19.apple.com/mobility">Apple COVID-19 Project</a>, which is derived from the user devices that have installed Map serives.</p>
+<h4 id="213-google-search-trends-for-covid-keywords-google-trends"><a class="markdownIt-Anchor" href="#213-google-search-trends-for-covid-keywords-google-trends"></a> 2.1.3. Google search trends for COVID keywords: <a target="_blank" rel="noopener" href="https://trends.google.com/trends/">Google Trends</a></h4>
+<p>Public concern is picking up due to the overwhleming reports of pandemic outbreaks. People are using search engines to access the lastest information about the virus, in order to know more about the current situations, suggesting that data from search engines, such as Google, may serve as an indicator of the public perceptions and emotions towards the epidemic. In light of this, we have designed experiments on forecasting the Google Trends, as a way to explore the potential patterns of human behaviors on the Internet under the COVID-19 pandemic.</p>
+<h4 id="214-medical-care-vaccination-and-hospital-data-owid"><a class="markdownIt-Anchor" href="#214-medical-care-vaccination-and-hospital-data-owid"></a> 2.1.4. Medical care, vaccination and hospital data: <a target="_blank" rel="noopener" href="https://github.com/owid/covid-19-data">OWID</a></h4>
+<p>Medical intervention can significantly diminish morbidity and mortality. Accordingly, we incorporate data from <a target="_blank" rel="noopener" href="https://github.com/owid/covid-19-data">OWID</a>, containing global data of hospitals, vaccinations, nucleic aid tests, etc. as supplements to the dataset.</p>
+<div class="note "><h3 id="22-data-collection"><a class="markdownIt-Anchor" href="#22-data-collection"></a> 2.2. Data Collection</h3>
+</div>
+<p><a target="_blank" rel="noopener" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE</a>, <a target="_blank" rel="noopener" href="https://covid19.apple.com/mobility">Apply Mobility</a> and <a target="_blank" rel="noopener" href="https://github.com/owid/covid-19-data">OWID</a> provide COVID-19 data publicly in csv formats, which allows us to acquire the original data by simply downloading data files. Google Trends, nontheless, only exhbits coarse-grained (weekly) trends data for long-period queries in our case (i.e. 420 days). Thus, we not only need to crawl the web pages to acquire the trends data, but also to reconstruct fine-grained (daily) trends for our modeling. We briefly introduce our approach to process Google Trends data in <a href="#221-google-trends">Section 2.2</a>.</p>
+<p>The COVID-19 data we collect covers the period from January 22, 2020 to March 16 2021. Among the 420 days’ data, 12 days (with a ratio of 0.03) from March 5 2021 to March 16 2021 are selected as test samples, and the rest of the data are fed into the neural networks as training samples.</p>
+<h4 id="221-google-trends"><a class="markdownIt-Anchor" href="#221-google-trends"></a> 2.2.1. Google Trends</h4>
+<p>In Google Trends service, queries of different time frame sizes result in different granularity of trends data. For example, when querying the trends data from January 22 2020 to March 16 2021, only weekly data are available in the web charts, as shown in the figure below. Consequently, covering the whole time period with daily data requires multiple queries on a much smaller time frame size, and then merging time frames of smaller scales into the whole time series.</p>
+<p><img src="/2021/03/22/sns-assignment/weekly_trends.png" alt="Weekly Google Trends for 'vaccine' and 'COVID'"></p>
+<p>Additionally, the same time point in different time frames may have different hotness values, since Google Trends service assign a relative value to each data point based on their relative hotness between maximum hotness value in its time frame. Thus, to extend multiple time frames to the final dataset, we need to adjust the relative values in all time frames to the same scale using the overlapped areas of two adjacent time intervals.</p>
+<p>In our implementation of Google Trends cralwer, we first send requests to Google Trends servers for search trends of a given keyword on multiple time intervals, and then use a merging function to generate the complete time series. As for the merging of two intervals, we calculate a scaling coefficient using a common data point in two adjacent time frames (e.g. maximum values), then adjusting one of the intervals by multiplying it with the coefficient, before attaching it to the other time frame.</p>
+<p>The daily trends for two keywords, <code>vaccine</code> and <code>COVID</code> are shown in the figures below for comparison.</p>
+<p><img src="/2021/03/22/sns-assignment/daily_trends.png" alt="Daily Google Trends for 'vaccine' and 'COVID'"></p>
+<div class="note "><h3 id="23-data-preprocessing"><a class="markdownIt-Anchor" href="#23-data-preprocessing"></a> 2.3. Data Preprocessing</h3>
+</div>
+<p>In this section, we given an overview on the data preprocessing approaches for our time series dataset construction.</p>
+<h4 id="231-outlier-removal"><a class="markdownIt-Anchor" href="#231-outlier-removal"></a> 2.3.1. Outlier Removal</h4>
+<h4 id="232-rolling"><a class="markdownIt-Anchor" href="#232-rolling"></a> 2.3.2. Rolling</h4>
+<h4 id="233-scaling"><a class="markdownIt-Anchor" href="#233-scaling"></a> 2.3.3. Scaling</h4>
 <div class="note "><p>MinMaxScaler Just scaling to [0, 1]<br>
 Outlier Removal<br>
-Rolling Values<br>
-Bayesian?<br>
-Engineering More Features (automated feature extractors, bucketing to percentiles, etc)?</p>
+Rolling Values</p>
 </div>
-<p><img src="/.com//trends_vaccine.png" alt="Google Trends for &quot;vaccine&quot;"></p>
-<h3 id="google-trends"><a class="markdownIt-Anchor" href="#google-trends"></a> Google Trends</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="global-covid-19-cases"><a class="markdownIt-Anchor" href="#global-covid-19-cases"></a> Global COVID-19 Cases</h3>
-<h3 id="mobility"><a class="markdownIt-Anchor" href="#mobility"></a> Mobility</h3>
-<h3 id="owid"><a class="markdownIt-Anchor" href="#owid"></a> OWID</h3>
-<div class="note "><p>Explanation of what these are, how they were collectedand how you pre-processed the data</p>
+<p><img src="/2021/03/22/sns-assignment/trends_vaccine.png" alt="Google Trends for &quot;vaccine&quot;"></p>
+<div class="note primary"><h2 id="3-model"><a class="markdownIt-Anchor" href="#3-model"></a> 3. Model</h2>
 </div>
-<div class="note primary"><h2 id="model"><a class="markdownIt-Anchor" href="#model"></a> Model</h2>
+<h3 id="31-lstm"><a class="markdownIt-Anchor" href="#31-lstm"></a> 3.1. LSTM</h3>
+<h4 id="311-lstm-with-attention"><a class="markdownIt-Anchor" href="#311-lstm-with-attention"></a> 3.1.1. LSTM with Attention</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Activation</th>
+<th style="text-align:center">Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">sigmoid</td>
+<td style="text-align:center">9.11*10<sup>-4</sup></td>
+</tr>
+<tr>
+<td style="text-align:center">tanh</td>
+<td style="text-align:center">1.40*10<sup>-3</sup></td>
+</tr>
+<tr>
+<td style="text-align:center">linear</td>
+<td style="text-align:center">1.72*10<sup>-4</sup></td>
+</tr>
+<tr>
+<td style="text-align:center">relu</td>
+<td style="text-align:center">9.58*10<sup>-1</sup></td>
+</tr>
+</tbody>
+</table>
+<h4 id="312-bayesian-optimization"><a class="markdownIt-Anchor" href="#312-bayesian-optimization"></a> 3.1.2. Bayesian Optimization</h4>
+<p>To optimize our LSTM models performance, we conduct experiments on different hyperparameter settings. To avoid brute-force search on a large number of possible combinations, which is time-consuming and computationally expensive, we apply the Bayesian Optimization algorithm[10^] to automatically and efficiently direct the search of hyperparameters.</p>
+<p>Bayesian Optimization is an effective tool for the global optimization problem of black-box functions[11^], especially when objective functions are costly to evaluate. The algorithm utilizes a acquisition function to direct the search with a probabilistic model of the objective function, i.e. surrogate function, and then decideds on which candidate samples to be chosen for the next evaluation<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>.</p>
+<p>In our implementation, we first convert the training function into a black-box style, which takes as inputs a tuple of hyperparameters to be searched, and outputs values of evaluation metrics. Take the <code>(dropout, output_dim)</code> hyperparameters tuning as an example. The black-box function is defined as below, taking a tuple as its input and training the multi-layer LSTM model with the given tuple of hyperparameters. As a guidance for next exploitation locations of the objective function, the evaluation metrics will be returned at last.</p>
+<figure class="highlight python"><figcaption><span>Training Black-box</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">dropout, output_dim</span>):</span></span><br><span class="line">    <span class="comment"># ...    </span></span><br><span class="line">    configs = &#123;</span><br><span class="line">        <span class="comment"># ...</span></span><br><span class="line">        <span class="string">&#x27;model_type&#x27;</span>: <span class="string">&#x27;multi_layer_lstm&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;dropout&#x27;</span>: dropout,</span><br><span class="line">        <span class="string">&#x27;output_dim&#x27;</span>: output_dim,</span><br><span class="line">    &#125;</span><br><span class="line">    model = LSTMModel(**configs)</span><br><span class="line">    model.construct_model()</span><br><span class="line">    model.train()</span><br><span class="line">    <span class="keyword">return</span> model.evaluate()</span><br></pre></td></tr></table></figure>
+<p>The Bayesian Optimization calling function is shown as below. We specify the boundaries of the space to be explored, the number of random exploration steps, and the number of iterations to be performed.</p>
+<figure class="highlight python"><figcaption><span>Optimization Function</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bayesian_optimization</span>():</span></span><br><span class="line">    <span class="comment"># Boundaries of search space</span></span><br><span class="line">    pbounds = &#123;</span><br><span class="line">        <span class="string">&#x27;dropout&#x27;</span>: (<span class="number">0.0</span>, <span class="number">0.20</span>),</span><br><span class="line">        <span class="string">&#x27;output_dim&#x27;</span>: (<span class="number">64</span>, <span class="number">256</span>),</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># Register a logger</span></span><br><span class="line">    logger = JSONLogger(path=<span class="string">&quot;./logs.json&quot;</span>)</span><br><span class="line">    optimizer = BayesianOptimization(</span><br><span class="line">        f=train,</span><br><span class="line">        pbounds=pbounds,</span><br><span class="line">        random_state=<span class="number">1</span>,</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># Subscribe the logger</span></span><br><span class="line">    optimizer.subscribe(Events.OPTIMIZATION_STEP, logger)</span><br><span class="line">    <span class="comment"># init_points </span></span><br><span class="line">    optimizer.maximize(</span><br><span class="line">        init_points=<span class="number">5</span>,</span><br><span class="line">        n_iter=<span class="number">15</span>,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>From the table below, we observe that the target function converges with iterations, and the minimal target value are obtained in the last iteration, where the optimal values for <code>dropout</code> and <code>output_dim</code> are around 0.03 and 195.35.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Iterations</th>
+<th style="text-align:center">Target</th>
+<th style="text-align:center">Dropout</th>
+<th style="text-align:center">Dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0.2625</td>
+<td style="text-align:center">0.08</td>
+<td style="text-align:center">202.30</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.0059</td>
+<td style="text-align:center">0.00</td>
+<td style="text-align:center">122.05</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0.0714</td>
+<td style="text-align:center">0.03</td>
+<td style="text-align:center">81.73</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0.0097</td>
+<td style="text-align:center">0.04</td>
+<td style="text-align:center">130.35</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0.0219</td>
+<td style="text-align:center">0.08</td>
+<td style="text-align:center">167.45</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">0.0244</td>
+<td style="text-align:center">0.10</td>
+<td style="text-align:center">203.17</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">0.0028</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">81.75</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">0.0602</td>
+<td style="text-align:center">0.03</td>
+<td style="text-align:center">184.73</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">0.0085</td>
+<td style="text-align:center">0.02</td>
+<td style="text-align:center">209.67</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">0.0045</td>
+<td style="text-align:center">0.08</td>
+<td style="text-align:center">95.00</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0.0629</td>
+<td style="text-align:center">0.18</td>
+<td style="text-align:center">149.86</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">0.0171</td>
+<td style="text-align:center">0.09</td>
+<td style="text-align:center">131.59</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">0.0117</td>
+<td style="text-align:center">0.12</td>
+<td style="text-align:center">139.43</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">0.0042</td>
+<td style="text-align:center">0.11</td>
+<td style="text-align:center">198.79</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">0.0075</td>
+<td style="text-align:center">0.03</td>
+<td style="text-align:center">142.08</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">0.0042</td>
+<td style="text-align:center">0.01</td>
+<td style="text-align:center">166.58</td>
+</tr>
+<tr>
+<td style="text-align:center">16</td>
+<td style="text-align:center">0.0035</td>
+<td style="text-align:center">0.07</td>
+<td style="text-align:center">116.78</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:center">0.0032</td>
+<td style="text-align:center">0.04</td>
+<td style="text-align:center">193.30</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center">0.0049</td>
+<td style="text-align:center">0.18</td>
+<td style="text-align:center">143.88</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:center">0.0007</td>
+<td style="text-align:center">0.03</td>
+<td style="text-align:center">195.35</td>
+</tr>
+</tbody>
+</table>
+<h4 id="314-activation-functions"><a class="markdownIt-Anchor" href="#314-activation-functions"></a> 3.1.4. Activation Functions</h4>
+<p>We apply 4 different activation functions in single-layer LSTM networks in forcast confirmed cases. The test results shown in the table below indicates that ReLu function cannot be used for training LSTM, and sigmoid and linear functions achieve the minimal loss.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Activation</th>
+<th style="text-align:center">Loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">sigmoid</td>
+<td style="text-align:center">9.11*10<sup>-4</sup></td>
+</tr>
+<tr>
+<td style="text-align:center">tanh</td>
+<td style="text-align:center">1.40*10<sup>-3</sup></td>
+</tr>
+<tr>
+<td style="text-align:center">linear</td>
+<td style="text-align:center">1.72*10<sup>-4</sup></td>
+</tr>
+<tr>
+<td style="text-align:center">relu</td>
+<td style="text-align:center">9.58*10<sup>-1</sup></td>
+</tr>
+</tbody>
+</table>
+<p>Through the loss history during training, we find that sigmoid function converge swiftly and generate well fitting results. Nevertheless, the loss of ReLu model</p>
+<p><img src="/2021/03/22/sns-assignment/linear_loss.png" alt="Linear Model Loss"></p>
+<p><img src="/2021/03/22/sns-assignment/relu_loss.png" alt="ReLu Model Loss"></p>
+<h3 id="32-transformer"><a class="markdownIt-Anchor" href="#32-transformer"></a> 3.2. Transformer</h3>
+<div class="note primary"><h2 id="4-results"><a class="markdownIt-Anchor" href="#4-results"></a> 4. Results</h2>
 </div>
-<div class="note "><p>Framework and code. This should use neural networks</p>
-</div>
-<div class="note primary"><h2 id="results"><a class="markdownIt-Anchor" href="#results"></a> Results</h2>
-</div>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You should present all your resultsresults you may have but you need to present a table with the accuracy of your results for several days in advanceas the one in the following table.</span><br></pre></td></tr></table></figure>
-<h2 id="references"><a class="markdownIt-Anchor" href="#references"></a> References</h2>
+<h3 id="41-accuracy-of-confirmed-cases"><a class="markdownIt-Anchor" href="#41-accuracy-of-confirmed-cases"></a> 4.1. Accuracy of Confirmed Cases</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Single-Layer LSTM</th>
+<th style="text-align:center">Multi-Layer LSTM</th>
+<th style="text-align:center">LSTM after Attention</th>
+<th style="text-align:center">LSTM before Attention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-accuracy-of-google-trends"><a class="markdownIt-Anchor" href="#42-accuracy-of-google-trends"></a> 4.2. Accuracy of Google Trends</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Single-Layer LSTM</th>
+<th style="text-align:center">Multi-Layer LSTM</th>
+<th style="text-align:center">LSTM after Attention</th>
+<th style="text-align:center">LSTM before Attention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-references"><a class="markdownIt-Anchor" href="#5-references"></a> 5. References</h2>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
@@ -295,9 +708,15 @@ Engineering More Features (automated feature extractors, bucketing to percentile
 </li>
 <li id="fn3" class="footnote-item"><p>Ferstad, J.O., Gu, A.J., Lee, R.Y., Thapa, I., Shin, A.Y., Salomon, J.A., Glynn, P., Shah, N.H., Milstein, A., Schulman, K. and Scheinker, D., 2020. A model to forecast regional demand for COVID-19 related hospital beds. medRxiv. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn4" class="footnote-item"><p>Dean, N.E., y Piontti, A.P., Madewell, Z.J., Cummings, D.A., Hitchings, M.D., Joshi, K., Kahn, R., Vespignani, A., Halloran, M.E. and Longini Jr, I.M., 2020. Ensemble forecast modeling for the design of COVID-19 vaccine efficacy trials. Vaccine, 38(46), pp.7213-7216. <a href="#fnref4" class="footnote-backref">↩︎</a> <a href="#fnref4:1" class="footnote-backref">↩︎</a></p>
+<li id="fn4" class="footnote-item"><p>Dean, N.E., y Piontti, A.P., Madewell, Z.J., Cummings, D.A., Hitchings, M.D., Joshi, K., Kahn, R., Vespignani, A., Halloran, M.E. and Longini Jr, I.M., 2020. Ensemble forecast modeling for the design of COVID-19 vaccine efficacy trials. Vaccine, 38(46), pp.7213-7216. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn5" class="footnote-item"><p>Hochreiter, S. and Schmidhuber, J., 1997. Long short-term memory. Neural computation, 9(8), pp.1735-1780. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, L. and Polosukhin, I., 2017. Attention is all you need. arXiv preprint arXiv:1706.03762. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Linka, K., Goriely, A. and Kuhl, E., 2021. Global and local mobility as a barometer for COVID-19 dynamics. Biomechanics and modeling in mechanobiology, pp.1-19. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Frazier, P.I., 2018. A tutorial on Bayesian optimization. arXiv preprint arXiv:1807.02811. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
@@ -365,6 +784,8 @@ Engineering More Features (automated feature extractors, bucketing to percentile
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
