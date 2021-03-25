@@ -234,7 +234,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-25 21:57:01" itemprop="dateModified" datetime="2021-03-25T21:57:01+08:00">2021-03-25</time>
+        <time title="Modified: 2021-03-25 23:09:38" itemprop="dateModified" datetime="2021-03-25T23:09:38+08:00">2021-03-25</time>
       </span>
 
   
@@ -248,16 +248,17 @@
     
     <div class="post-body" itemprop="articleBody">
           <blockquote class="blockquote-center">
-<p>Software for Network Services Project Assignment<br>
+<p><strong>Software for Network Services Project Assignment</strong><br>
+Student Number: <strong>20159401</strong><br>
 2021 Fall<br>
-Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/chenducl/SNS-Assignment-2021">GitHub</a></p>
+<em>Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/chenducl/SNS-Assignment-2021">GitHub</a></em></p>
 
 </blockquote>
 <div class="note primary"><h2 id="1-introduction"><a class="markdownIt-Anchor" href="#1-introduction"></a> 1. Introduction</h2>
 </div>
-<p>The COVID-19 pandemic, one of the deadliest pandemics in history, was first identified in December 2019, and has influenced more than 180 countries in the world. Aiming at establishing effective policies to reduce the pandemic spread, massive efforts have been carried out by governments and researchers for the best synergy. Specifically, the capabilities of analyzing the transmission patterns and forecasting the trends of the pandemic allow the governments to perform proper actions to inhibit its spread efficiently. Numerous time series methods have been proposed to forecast the COVID-19 cases<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, epidemiological trends<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, hospitalizations<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>, vaccine efficacy trials<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>, etc.</p>
+<p>The COVID-19 pandemic, one of the deadliest pandemics in history, was first identified in December 2019, and has influenced more than 180 countries in the world. Aiming at establishing effective policies to reduce the pandemic spread, massive efforts have been carried out by governments and researchers for the best synergy. Specifically, the capabilities of analyzing the transmission patterns and forecasting the trends of the pandemic allow the governments to perform proper actions to inhibit its spread efficiently. Numerous time series methods have been proposed to forecast the COVID-19 cases (Maleki, 2020), epidemiological trends (Wang, 2020), hospitalizations(Ferstad, 2020), vaccine efficacy trials (Dean, 2020), etc.</p>
 <p>In this assignment, we focus on forecasting the global COVID-19 cases and Google Search Trends. To obtain a comprehensive understanding of the pandemic trends, we collect diverse data sources, including global cases, mobility, hospitalizations, medical care, and vaccination data.</p>
-<p>The use of neural networks enables us to develop a model that learns the inherent patterns in these past observations and then predicts the future values with the trained model. Specifically, we implement long short-term memory (LSTM)<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> and transformer<sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> for time series modeling. To select the best fitting model from model candidates, various experiments have been conducted on deciding the optimal model structures and hyperparameters in our forecasting task.</p>
+<p>The use of neural networks enables us to develop a model that learns the inherent patterns in these past observations and then predicts the future values with the trained model. Specifically, we implement long short-term memory (LSTM) (Hochreiter and Schmidhuber, 1997) and transformer (Vaswani, 2017) for time series modeling. To select the best fitting model from model candidates, various experiments have been conducted on deciding the optimal model structures and hyperparameters in our forecasting task.</p>
 <div class="note primary"><h2 id="2-dataset"><a class="markdownIt-Anchor" href="#2-dataset"></a> 2. Dataset</h2>
 </div>
 <div class="note "><h3 id="21-data-sources"><a class="markdownIt-Anchor" href="#21-data-sources"></a> 2.1. Data Sources</h3>
@@ -265,7 +266,7 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <h4 id="211-global-covid-19-cases-data-jhu-csse"><a class="markdownIt-Anchor" href="#211-global-covid-19-cases-data-jhu-csse"></a> 2.1.1. Global COVID-19 cases data: <a target="_blank" rel="noopener" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE</a></h4>
 <p>To leverage the history of the COVID-19 pandemic in time series modeling, we first collect the past pandemic statistics, including confirmed cases, recovered cases, deaths, active cases.</p>
 <h4 id="212-global-mobility-data-apple-mobility"><a class="markdownIt-Anchor" href="#212-global-mobility-data-apple-mobility"></a> 2.1.2. Global mobility data: <a target="_blank" rel="noopener" href="https://covid19.apple.com/mobility">Apple Mobility</a></h4>
-<p>Prior studies have demonstrated that COVID spreads rapidly through contact, and population mobility data partly reflects the contact between people and the impacts of social distancing policies<sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>. Thus, aside from the use of past COVID-19 cases data, we introduce mobility data as well, to serve as a possible proxy for human interactions. The global mobility data is provided by <a target="_blank" rel="noopener" href="https://covid19.apple.com/mobility">Apple COVID-19 Project</a>, which is derived from the user devices that have installed Map sevices.</p>
+<p>Prior studies have demonstrated that COVID spreads rapidly through contact, and population mobility data partly reflects the contact between people and the impacts of social distancing policies (Linka, 2021). Thus, aside from the use of past COVID-19 cases data, we introduce mobility data as well, to serve as a possible proxy for human interactions. The global mobility data is provided by <a target="_blank" rel="noopener" href="https://covid19.apple.com/mobility">Apple COVID-19 Project</a>, which is derived from the user devices that have installed Map sevices.</p>
 <h4 id="213-google-search-trends-for-covid-keywords-google-trends"><a class="markdownIt-Anchor" href="#213-google-search-trends-for-covid-keywords-google-trends"></a> 2.1.3. Google search trends for COVID keywords: <a target="_blank" rel="noopener" href="https://trends.google.com/trends/">Google Trends</a></h4>
 <p>Public concern is picking up due to the overwhelming reports of pandemic outbreaks. People are using search engines to access the latest information about the virus, to know more about the current situations, suggesting that data from search engines, such as Google, may serve as an indicator of the public perceptions and emotions towards the epidemic. In light of this, we have designed experiments on forecasting the Google Trends, as a way to explore the potential patterns of human behaviors on the Internet under the COVID-19 pandemic.</p>
 <h4 id="214-medical-care-vaccination-and-hospital-data-owid"><a class="markdownIt-Anchor" href="#214-medical-care-vaccination-and-hospital-data-owid"></a> 2.1.4. Medical care, vaccination, and hospital data: <a target="_blank" rel="noopener" href="https://github.com/owid/covid-19-data">OWID</a></h4>
@@ -273,7 +274,7 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <div class="note "><h3 id="22-data-collection"><a class="markdownIt-Anchor" href="#22-data-collection"></a> 2.2. Data Collection</h3>
 </div>
 <p><a target="_blank" rel="noopener" href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE</a>, <a target="_blank" rel="noopener" href="https://covid19.apple.com/mobility">Apply Mobility</a> and <a target="_blank" rel="noopener" href="https://github.com/owid/covid-19-data">OWID</a> provide COVID-19 data publicly in csv formats, which allows us to acquire the original data by simply downloading data files. Google Trends, nonetheless, only exhibits coarse-grained (weekly) trends data for long-period queries in our case (i.e. 420 days). Thus, we not only need to crawl the web pages to acquire the trends data, but also to reconstruct fine-grained (daily) trends for our modeling. We briefly introduce our approach to process Google Trends data in <a href="#221-google-trends">Section 2.2.1</a>.</p>
-<p><code>19</code> kinds of features, such as dates, increments of COVID-19 cases, ICU patients, etc. are extracted from the data sources above, and our data covers the period from <code>January 22, 2020</code> to <code>March 16, 2021</code>. Among the 420 days’ data, 12 days (with a ratio of 0.03) from March 5, 2021 to March 16, 2021 are selected as test samples, and the rest of the data are fed into the neural networks as training samples.</p>
+<p><code>19</code> kinds of features, such as dates, increments of COVID-19 cases, ICU patients, etc. are extracted from the data sources above, and our data covers the period from <code>January 22, 2020</code> to <code>March 16, 2021</code>. Among the 420 days’ data, 13 days (with a ratio of 0.03) from March 5, 2021 to March 16, 2021 are selected as test samples, and the rest of the data are fed into the neural networks as training samples.</p>
 <h4 id="221-google-trends"><a class="markdownIt-Anchor" href="#221-google-trends"></a> 2.2.1. Google Trends</h4>
 <p>In the Google Trends service, queries of different time frame sizes result in different granularity of trends data. For example, when querying the trends data from January 22, 2020 to March 16, 2021, only weekly data are available in the web charts, as shown in the figure below. Consequently, covering the whole period with daily data requires multiple queries on a much smaller time frame size, and then merging time frames of smaller scales into the whole time series.</p>
 <p><img src="/2021/03/22/sns-assignment/weekly_trends.png" alt="Weekly Google Trends for 'vaccine' and 'COVID'"></p>
@@ -307,7 +308,7 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <p>The figure shows an example of scaling results:</p>
 <p><img src="/2021/03/22/sns-assignment/scaling.png" alt="Scaling Results"></p>
 <h4 id="235-data-splitting"><a class="markdownIt-Anchor" href="#235-data-splitting"></a> 2.3.5. Data Splitting</h4>
-<p>For further model experiments, we construct two types of dataset: the COVID-19 cases dataset, and the Google Trends dataset, and split them into training and testing sets with a ratio of 0.03 (12 days among 420 days) of testing samples. Though there are a large number of combinations of features can be selected, we choose 7 kinds of features for each forecasting task in our initial datasets, and the results demonstrate that these kinds of features are adequate for our task.</p>
+<p>For further model experiments, we construct two types of dataset: the COVID-19 cases dataset, and the Google Trends dataset, and split them into training and testing sets with a ratio of 0.03 (13 days among 420 days) of testing samples. Though there are a large number of combinations of features can be selected, we choose 7 kinds of features for each forecasting task in our initial datasets, and the results demonstrate that these kinds of features are adequate for our task.</p>
 <table>
 <thead>
 <tr>
@@ -332,18 +333,18 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <div class="note primary"><h2 id="3-model"><a class="markdownIt-Anchor" href="#3-model"></a> 3. Model</h2>
 </div>
 <h3 id="31-lstm"><a class="markdownIt-Anchor" href="#31-lstm"></a> 3.1. LSTM</h3>
-<p>Long short-term memory (LSTM)<sup class="footnote-ref"><a href="#fn5" id="fnref5:1">[5:1]</a></sup> is a recurrent neural network (RNN) architecture, that has both feedforward and feedback connections. An LSTM model is composed of cells that are capable of regulating the information flow with gates, where the cells learn which part of data is important or less important in predicting the results. Such models are well-suited for processing time series data, as the network can exploit sequence dependence in series problems. In our work, we build single-layer, multi-layer LSTM and LSTM with attention to explore which type of model is the best fit for our task.</p>
+<p>Long short-term memory (LSTM)(Hochreiter and Schmidhuber, 1998) is a recurrent neural network (RNN) architecture, that has both feedforward and feedback connections. An LSTM model is composed of cells that are capable of regulating the information flow with gates, where the cells learn which part of data is important or less important in predicting the results. Such models are well-suited for processing time series data, as the network can exploit sequence dependence in series problems. In our work, we build single-layer, multi-layer LSTM and LSTM with attention to explore which type of model is the best fit for our task.</p>
 <p>In the following, we will introduce our design and experiments of LSTM models, including structures comparison in <a href="#311-lstm-layers">Section 3.1.1</a>, <a href="#312-lstm-with-attention">Section 3.1.2</a> and <a href="#313-lstm-structures-comparison">Section 3.1.3</a>; the Bayesian Optimization algorithm experiments for hyperparameters tuning in <a href="#314-bayesian-optimization">Section 3.1.4</a>; different LSTM activation functions comparison in <a href="#315-activation-functions">Section 3.1.5</a>. Codes are partly presented in the sections below, more programming details and experiment results are available in <a target="_blank" rel="noopener" href="https://github.com/chenducl/SNS-Assignment-2021/blob/main/lstm_model.py">LSTM model class</a> and <a target="_blank" rel="noopener" href="https://github.com/chenducl/SNS-Assignment-2021/blob/main/lstm_experiment.ipynb">LSTM experiments in iPython formats</a>.</p>
 <h4 id="311-lstm-layers"><a class="markdownIt-Anchor" href="#311-lstm-layers"></a> 3.1.1. LSTM Layers</h4>
 <p>We build a single-layer LSTM with the code below. A <code>Sequential</code> constructor allows us to stack layers with linear topology, where each of them has one input and one output tensor. LSTM layer is then added to the Sequential constructor. Notice that the input shape is determined by the timestep and the number of features of each time point, and the output shape in the last dense layer is the length of labels to be predicted.</p>
 <figure class="highlight python"><figcaption><span>Single-layer LSTM construction</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">construct_single_layer_lstm</span>(<span class="params">self</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; Construct a single-layer LSTM model</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="comment"># Using Sequential constructor</span></span><br><span class="line">    self.model = Sequential()</span><br><span class="line">    self.model.add(LSTM(units=self.output_dim, input_shape=(self.dataset.timestep, <span class="built_in">len</span>(self.dataset.feature_cols))))</span><br><span class="line">    self.model.add(Dense(units=<span class="built_in">len</span>(self.dataset.label_cols)))</span><br><span class="line">    <span class="comment"># Activation Functions</span></span><br><span class="line">    <span class="keyword">if</span> self.activation != <span class="literal">None</span>:</span><br><span class="line">        self.model.add(Activation(self.activation))</span><br><span class="line">    <span class="comment"># MSE loss and adam optimizer</span></span><br><span class="line">    self.model.<span class="built_in">compile</span>(loss=self.loss, optimizer=self.optimizer)</span><br></pre></td></tr></table></figure>
 <p>Take Google Trends forecasting for example. We choose 14 days as the timestep, and 7 kinds of features are selected. The task is to predict the trends for keywords <code>vaccine</code> and <code>COVID</code>. The figure shows the single-layer LSTM model structure. The input is shaped as <code>(None, 14, 7)</code>, where the first dimension represents the number of samples, 14 and 7 represent the timestep and the number of features, respectively. The second dimension of outputs is 2, denoting the number of targets to be predicted.</p>
 <p><img src="/2021/03/22/sns-assignment/single_layer_lstm.png" alt="Single-layer LSTM Model Structure"></p>
-<p>Next, we add 3 hidden LSTM layers and dropout between the input and the dense layer with the code below. Dropout is a regularization technique developed by Google, to overcome the overfitting problem of machine learning networks<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>. The core of dropout is to stochastically drop nodes in the network during training. The values of the dropout parameter are determined using the Bayesian Optimization method in <a href="#314-bayesian-optimization">Section 3.1.4</a>.</p>
+<p>Next, we add 3 hidden LSTM layers and dropout between the input and the dense layer with the code below. Dropout is a regularization technique developed by Google (Hinton, 2012), to overcome the overfitting problem of machine learning networks. The core of dropout is to stochastically drop nodes in the network during training. The values of the dropout parameter are determined using the Bayesian Optimization method in <a href="#314-bayesian-optimization">Section 3.1.4</a>.</p>
 <figure class="highlight python"><figcaption><span>Multi-layer LSTM construction</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Three-layer LSTM with Dropout</span></span><br><span class="line">self.model.add(LSTM(units=self.output_dim, return_sequences=<span class="literal">True</span>, input_shape=(self.dataset.timestep, <span class="built_in">len</span>(self.dataset.feature_cols))))</span><br><span class="line">self.model.add(Dropout(self.dropout))</span><br><span class="line">self.model.add(LSTM(units=self.output_dim, return_sequences=<span class="literal">True</span>))</span><br><span class="line">self.model.add(Dropout(self.dropout))</span><br><span class="line">self.model.add(LSTM(units=self.output_dim, return_sequences=<span class="literal">False</span>))</span><br><span class="line">self.model.add(Dropout(self.dropout))</span><br></pre></td></tr></table></figure>
 <p><img src="/2021/03/22/sns-assignment/multi_layer_lstm.png" alt="Multi-layer LSTM Model Structure"></p>
 <h4 id="312-lstm-with-attention"><a class="markdownIt-Anchor" href="#312-lstm-with-attention"></a> 3.1.2. LSTM with Attention</h4>
-<p>Attention mechanism<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup> aims at enhancing salient information by stimulating human cognitive attention. We involve the attention mechanism in our experiments to extract the relatively important parts of temporal sequences to boost performance.</p>
+<p>Attention mechanism (Bahdanau and Bengio, 2014) aims at enhancing salient information by stimulating human cognitive attention. We involve the attention mechanism in our experiments to extract the relatively important parts of temporal sequences to boost performance.</p>
 <p>The figure shows the model structure of an LSTM layer with attention block, and the attention block is introduced before the LSTM layer, indicating we apply the attention mechanism directly onto the inputs. Similarly, the attention can be added after the LSTM layer to highlight the important parts of LSTM outputs.</p>
 <p><img src="/2021/03/22/sns-assignment/attention_lstm.png" alt="Attention + LSTM"></p>
 <p>The following is the implementation of the attention block, in which we realize the attention mechanism using a dense layer with a softmax activation function. <code>Permute</code> operations are used to transpose the inputs before fed into the dense layer, where the attention weights are calculated. <code>Multiply</code> operations multiply the attention weights with inputs to obtain the final embeddings.</p>
@@ -351,7 +352,7 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <p>To construct an LSTM model with an attention block, we simply add an attention layer before or after the LSTM layer. The attention block before LSTM will compute attention weights for original inputs; and the attention block after LSTM will apply attention computation on the outputs of LSTM layer. We will compare the two different methods in the <a href="313-lstm-structure-comparison">Section</a>.</p>
 <figure class="highlight python"><figcaption><span>Attention before LSTM</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">construct_attention_lstm</span>(<span class="params">self</span>):</span></span><br><span class="line">    inputs = Input(shape=(self.dataset.timestep, <span class="built_in">len</span>(self.dataset.feature_cols)))</span><br><span class="line">    attention = self.attention_block(inputs)</span><br><span class="line">    attention = LSTM(units=self.output_dim, return_sequences=<span class="literal">False</span>)(attention)</span><br><span class="line">    output = Dense(<span class="built_in">len</span>(self.dataset.label_cols), activation=self.activation)(attention)</span><br><span class="line">    self.model = Model(inputs=[inputs], outputs=output)</span><br><span class="line">    <span class="comment"># MSE loss and adam optimizer</span></span><br><span class="line">    self.model.<span class="built_in">compile</span>(loss=self.loss, optimizer=self.optimizer)</span><br></pre></td></tr></table></figure>
 <h4 id="313-lstm-structures-comparison"><a class="markdownIt-Anchor" href="#313-lstm-structures-comparison"></a> 3.1.3. LSTM Structures Comparison</h4>
-<p>The tables in the following are the parameters and evaluation results of 4 types of LSTM models.</p>
+<p>The tables in the following are the parameters and evaluation results of 4 types of LSTM models. The MSE values show that an attention block before LSTM layers generate well-fitting results on both tasks.</p>
 <table>
 <thead>
 <tr>
@@ -406,28 +407,28 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <tr>
 <td style="text-align:center">Single-layer LSTM</td>
 <td style="text-align:center">0.0465</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0007</td>
 </tr>
 <tr>
 <td style="text-align:center">Single-layer LSTM + Attention</td>
 <td style="text-align:center">0.0428</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0009</td>
 </tr>
 <tr>
 <td style="text-align:center">Attention + Single-layer LSTM</td>
 <td style="text-align:center"><strong>0.0158</strong></td>
-<td style="text-align:center"></td>
+<td style="text-align:center"><strong>0.0002</strong></td>
 </tr>
 <tr>
 <td style="text-align:center">Multi-layer LSTM</td>
 <td style="text-align:center">0.0462</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.0032</td>
 </tr>
 </tbody>
 </table>
 <h4 id="314-bayesian-optimization"><a class="markdownIt-Anchor" href="#314-bayesian-optimization"></a> 3.1.4. Bayesian Optimization</h4>
-<p>To optimize our LSTM models’ performance, we conduct experiments on different hyperparameter settings. To avoid brute-force search on a large number of possible combinations, which is time-consuming and computationally expensive, we apply the Bayesian Optimization algorithm[10^] to automatically and efficiently direct the search of hyperparameters.</p>
-<p>The Bayesian Optimization algorithm is an effective tool for the global optimization problem of black-box functions[11^], especially when objective functions are costly to evaluate. The algorithm utilizes an acquisition function to direct the search with a probabilistic model of the objective function, i.e. surrogate function, and then decides on which candidate samples to be chosen for the next evaluation<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>.</p>
+<p>To optimize our LSTM models’ performance, we conduct experiments on different hyperparameter settings. To avoid brute-force search on a large number of possible combinations, which is time-consuming and computationally expensive, we apply the Bayesian Optimization algorithm (Snoek, 2012) to automatically and efficiently direct the search of hyperparameters.</p>
+<p>The Bayesian Optimization algorithm is an effective tool for the global optimization problem of black-box functions (Mockus, 2012), especially when objective functions are costly to evaluate. The algorithm utilizes an acquisition function to direct the search with a probabilistic model of the objective function, i.e. surrogate function, and then decides on which candidate samples to be chosen for the next evaluation (Frazier, 2018).</p>
 <p>In our implementation, we first convert the training function into a black-box style, which takes as inputs a tuple of hyperparameters to be searched, and outputs values of evaluation metrics. Take the <code>(dropout, output_dim)</code> hyperparameters tuning as an example. The black-box function is defined as below, taking a tuple as its input and training the multi-layer LSTM model with the given tuple of hyperparameters. As guidance for the next exploitation locations of the objective function, the evaluation metrics will be returned at last.</p>
 <figure class="highlight python"><figcaption><span>Training Black-box</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">dropout, output_dim</span>):</span></span><br><span class="line">    <span class="comment"># ...    </span></span><br><span class="line">    configs = &#123;</span><br><span class="line">        <span class="comment"># ...</span></span><br><span class="line">        <span class="string">&#x27;model_type&#x27;</span>: <span class="string">&#x27;multi_layer_lstm&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;dropout&#x27;</span>: dropout,</span><br><span class="line">        <span class="string">&#x27;output_dim&#x27;</span>: output_dim,</span><br><span class="line">    &#125;</span><br><span class="line">    model = LSTMModel(**configs)</span><br><span class="line">    model.construct_model()</span><br><span class="line">    model.train()</span><br><span class="line">    <span class="keyword">return</span> model.evaluate()</span><br></pre></td></tr></table></figure>
 <p>The Bayesian Optimization calling function is shown below. We specify the boundaries of the space to be explored, the number of random exploration steps, and the number of iterations to be performed.</p>
@@ -437,9 +438,9 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <thead>
 <tr>
 <th style="text-align:center">Iterations</th>
-<th style="text-align:center">Target</th>
-<th style="text-align:center">Dropout</th>
-<th style="text-align:center">Dimension</th>
+<th style="text-align:center">loss</th>
+<th style="text-align:center">dropout</th>
+<th style="text-align:center">output_dim</th>
 </tr>
 </thead>
 <tbody>
@@ -595,12 +596,12 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 </table>
 <p>Through the loss history during training, we find that the sigmoid function converges swiftly and generates well-fitting results.</p>
 <p><img src="/2021/03/22/sns-assignment/linear_loss.png" alt="Linear Model Loss"></p>
-<p>The loss history of the ReLu model is shown below. We observe that the model generates large loss values and fails to reduce its loss. Based on the definition of the ReLu function, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)=max(0, x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>, we assume this is an indicator of the <code>dying ReLu</code> problem: When <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>, the gradient of ReLU is permanently 0, so the network cannot be updated anymore, i.e. dying.</p>
+<p>The loss history of the ReLu model is shown below. We observe that the model generates large loss values and fails to reduce its loss. Based on the definition of the ReLu function, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)=max(0, x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>, we assume this is an indicator of the <code>dying ReLu</code> problem (Lu, 2019): When <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>, the gradient of ReLU is permanently 0, so the network cannot be updated anymore, i.e. dying.</p>
 <p><img src="/2021/03/22/sns-assignment/relu_loss.png" alt="ReLu Model Loss"></p>
 <h3 id="32-transformer"><a class="markdownIt-Anchor" href="#32-transformer"></a> 3.2. Transformer</h3>
-<p>The transformer<sup class="footnote-ref"><a href="#fn9" id="fnref9:1">[9:1]</a></sup> is a neural network architecture that employs the self-attention mechanism in its encoders and decoders, and was originally proposed in neural machine translation tasks to handle sequential data like natural language. Unlike RNNs, which process sequences in order, the transformer allows efficient parallel computation on the whole sequence; also, the transformer achieves better performance than RNN and LSTM on long sequences, as the framwork with the self-attention mechanism is more powerful to capture long dependencies.</p>
+<p>The transformer (Vaswani, 2017) is a neural network architecture that employs the self-attention mechanism in its encoders and decoders, and was originally proposed in neural machine translation tasks to handle sequential data like natural language. Unlike RNNs, which process sequences in order, the transformer allows efficient parallel computation on the whole sequence; also, the transformer achieves better performance than RNN and LSTM on long sequences, as the framwork with the self-attention mechanism is more powerful to capture long dependencies.</p>
 <p>We perform an experiment using the transformer network in forecasting the confirmed cases of COVID-19.</p>
-<p>To select a proper learning rate for our model before training, we employ a cyclical finder<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup> to help to decide the range of learning rate. The plot shows that when <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>r</mi><mo>=</mo><mn>0.0069</mn></mrow><annotation encoding="application/x-tex">lr=0.0069</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">6</span><span class="mord">9</span></span></span></span>, the concave function reaches its extremum.</p>
+<p>To select a proper learning rate for our model before training, we employ a cyclical finder (Smith, 2017) to help to decide the range of learning rate. The plot shows that when <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>r</mi><mo>=</mo><mn>0.0069</mn></mrow><annotation encoding="application/x-tex">lr=0.0069</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">0</span><span class="mord">6</span><span class="mord">9</span></span></span></span>, the concave function reaches its extremum.</p>
 <p><img src="/2021/03/22/sns-assignment/trans_lr.png" alt="Finding the Optimal Learning Rate"></p>
 <p>The training loss curve over epochs is shown below. The minimum MSE value of the model is 0.006 after 100 epochs of training.</p>
 <p><img src="/2021/03/22/sns-assignment/trans_training.png" alt="Training Loss"></p>
@@ -611,96 +612,110 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 <thead>
 <tr>
 <th style="text-align:center"></th>
-<th style="text-align:center">Single-Layer LSTM</th>
-<th style="text-align:center">Multi-Layer LSTM</th>
-<th style="text-align:center">LSTM after Attention</th>
-<th style="text-align:center">LSTM before Attention</th>
+<th style="text-align:center">single_layer_lstm</th>
+<th style="text-align:center">multi_layer_lstm</th>
+<th style="text-align:center">lstm_attention</th>
+<th style="text-align:center">attention_lstm</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">1</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.985172</td>
+<td style="text-align:center">0.963069</td>
+<td style="text-align:center">0.988704</td>
+<td style="text-align:center">0.996721</td>
 </tr>
 <tr>
 <td style="text-align:center">2</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.983471</td>
+<td style="text-align:center">0.959926</td>
+<td style="text-align:center">0.985950</td>
+<td style="text-align:center">0.995735</td>
 </tr>
 <tr>
 <td style="text-align:center">3</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.981668</td>
+<td style="text-align:center">0.956792</td>
+<td style="text-align:center">0.983044</td>
+<td style="text-align:center">0.994272</td>
 </tr>
 <tr>
 <td style="text-align:center">4</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.979731</td>
+<td style="text-align:center">0.953582</td>
+<td style="text-align:center">0.980020</td>
+<td style="text-align:center">0.993342</td>
 </tr>
 <tr>
 <td style="text-align:center">5</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.977791</td>
+<td style="text-align:center">0.950413</td>
+<td style="text-align:center">0.977014</td>
+<td style="text-align:center">0.991359</td>
 </tr>
 <tr>
 <td style="text-align:center">6</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.975414</td>
+<td style="text-align:center">0.947142</td>
+<td style="text-align:center">0.973891</td>
+<td style="text-align:center">0.989140</td>
 </tr>
 <tr>
 <td style="text-align:center">7</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.973297</td>
+<td style="text-align:center">0.943873</td>
+<td style="text-align:center">0.970732</td>
+<td style="text-align:center">0.987642</td>
 </tr>
 <tr>
 <td style="text-align:center">8</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.971055</td>
+<td style="text-align:center">0.940614</td>
+<td style="text-align:center">0.967535</td>
+<td style="text-align:center">0.985531</td>
 </tr>
 <tr>
 <td style="text-align:center">9</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.968841</td>
+<td style="text-align:center">0.937358</td>
+<td style="text-align:center">0.964274</td>
+<td style="text-align:center">0.983766</td>
 </tr>
 <tr>
 <td style="text-align:center">10</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.967106</td>
+<td style="text-align:center">0.934082</td>
+<td style="text-align:center">0.960959</td>
+<td style="text-align:center">0.980876</td>
 </tr>
 <tr>
 <td style="text-align:center">11</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.964477</td>
+<td style="text-align:center">0.930875</td>
+<td style="text-align:center">0.957634</td>
+<td style="text-align:center">0.978672</td>
 </tr>
 <tr>
 <td style="text-align:center">12</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">0.962019</td>
+<td style="text-align:center">0.927659</td>
+<td style="text-align:center">0.954204</td>
+<td style="text-align:center">0.976267</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">0.959418</td>
+<td style="text-align:center">0.924407</td>
+<td style="text-align:center">0.950690</td>
+<td style="text-align:center">0.973956</td>
+</tr>
+<tr>
+<td style="text-align:center">average</td>
+<td style="text-align:center">0.973035</td>
+<td style="text-align:center">0.943830</td>
+<td style="text-align:center">0.970358</td>
+<td style="text-align:center"><strong>0.986714</strong></td>
 </tr>
 </tbody>
 </table>
@@ -719,91 +734,91 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
 <td style="text-align:center">0.764897</td>
 <td style="text-align:center">0.760600</td>
 <td style="text-align:center">0.812198</td>
 <td style="text-align:center">0.985909</td>
 </tr>
 <tr>
-<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
 <td style="text-align:center">0.745847</td>
 <td style="text-align:center">0.741661</td>
 <td style="text-align:center">0.792178</td>
 <td style="text-align:center">0.975640</td>
 </tr>
 <tr>
-<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
 <td style="text-align:center">0.729086</td>
 <td style="text-align:center">0.724996</td>
 <td style="text-align:center">0.774562</td>
 <td style="text-align:center">0.964812</td>
 </tr>
 <tr>
-<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
 <td style="text-align:center">0.717002</td>
 <td style="text-align:center">0.712981</td>
 <td style="text-align:center">0.761918</td>
 <td style="text-align:center">0.958742</td>
 </tr>
 <tr>
-<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
 <td style="text-align:center">0.710459</td>
 <td style="text-align:center">0.706477</td>
 <td style="text-align:center">0.755107</td>
 <td style="text-align:center">0.957607</td>
 </tr>
 <tr>
-<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
 <td style="text-align:center">0.693996</td>
 <td style="text-align:center">0.690107</td>
 <td style="text-align:center">0.737745</td>
 <td style="text-align:center">0.941524</td>
 </tr>
 <tr>
-<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
 <td style="text-align:center">0.683038</td>
 <td style="text-align:center">0.679211</td>
 <td style="text-align:center">0.726214</td>
 <td style="text-align:center">0.932680</td>
 </tr>
 <tr>
-<td style="text-align:center">7</td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">0.667807</td>
 <td style="text-align:center">0.664067</td>
 <td style="text-align:center">0.710135</td>
 <td style="text-align:center">0.916855</td>
 </tr>
 <tr>
-<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
 <td style="text-align:center">0.652147</td>
 <td style="text-align:center">0.648495</td>
 <td style="text-align:center">0.693591</td>
 <td style="text-align:center">0.900531</td>
 </tr>
 <tr>
-<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
 <td style="text-align:center">0.645658</td>
 <td style="text-align:center">0.642042</td>
 <td style="text-align:center">0.686805</td>
 <td style="text-align:center">0.893913</td>
 </tr>
 <tr>
-<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
 <td style="text-align:center">0.637204</td>
 <td style="text-align:center">0.633636</td>
 <td style="text-align:center">0.677932</td>
 <td style="text-align:center">0.884450</td>
 </tr>
 <tr>
-<td style="text-align:center">11</td>
+<td style="text-align:center">12</td>
 <td style="text-align:center">0.625935</td>
 <td style="text-align:center">0.622431</td>
 <td style="text-align:center">0.666047</td>
 <td style="text-align:center">0.871212</td>
 </tr>
 <tr>
-<td style="text-align:center">12</td>
+<td style="text-align:center">13</td>
 <td style="text-align:center">0.621935</td>
 <td style="text-align:center">0.618454</td>
 <td style="text-align:center">0.661886</td>
@@ -831,91 +846,91 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
 <td style="text-align:center">0.929392</td>
 <td style="text-align:center">0.966286</td>
 <td style="text-align:center">0.947337</td>
 <td style="text-align:center">0.984699</td>
 </tr>
 <tr>
-<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
 <td style="text-align:center">0.927270</td>
 <td style="text-align:center">0.964075</td>
 <td style="text-align:center">0.944960</td>
 <td style="text-align:center">0.983525</td>
 </tr>
 <tr>
-<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
 <td style="text-align:center">0.923068</td>
 <td style="text-align:center">0.959701</td>
 <td style="text-align:center">0.940463</td>
 <td style="text-align:center">0.979897</td>
 </tr>
 <tr>
-<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
 <td style="text-align:center">0.920979</td>
 <td style="text-align:center">0.957524</td>
 <td style="text-align:center">0.938093</td>
 <td style="text-align:center">0.978486</td>
 </tr>
 <tr>
-<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
 <td style="text-align:center">0.916836</td>
 <td style="text-align:center">0.953212</td>
 <td style="text-align:center">0.933681</td>
 <td style="text-align:center">0.975068</td>
 </tr>
 <tr>
-<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
 <td style="text-align:center">0.910694</td>
 <td style="text-align:center">0.946822</td>
 <td style="text-align:center">0.927227</td>
 <td style="text-align:center">0.970069</td>
 </tr>
 <tr>
-<td style="text-align:center">6</td>
+<td style="text-align:center">7</td>
 <td style="text-align:center">0.910692</td>
 <td style="text-align:center">0.946816</td>
 <td style="text-align:center">0.927034</td>
 <td style="text-align:center">0.971791</td>
 </tr>
 <tr>
-<td style="text-align:center">7</td>
+<td style="text-align:center">8</td>
 <td style="text-align:center">0.900638</td>
 <td style="text-align:center">0.936360</td>
 <td style="text-align:center">0.916599</td>
 <td style="text-align:center">0.962810</td>
 </tr>
 <tr>
-<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
 <td style="text-align:center">0.888864</td>
 <td style="text-align:center">0.924116</td>
 <td style="text-align:center">0.904399</td>
 <td style="text-align:center">0.952145</td>
 </tr>
 <tr>
-<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
 <td style="text-align:center">0.877393</td>
 <td style="text-align:center">0.912189</td>
 <td style="text-align:center">0.892474</td>
 <td style="text-align:center">0.940130</td>
 </tr>
 <tr>
-<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
 <td style="text-align:center">0.873634</td>
 <td style="text-align:center">0.908280</td>
 <td style="text-align:center">0.888363</td>
 <td style="text-align:center">0.937552</td>
 </tr>
 <tr>
-<td style="text-align:center">11</td>
+<td style="text-align:center">12</td>
 <td style="text-align:center">0.869908</td>
 <td style="text-align:center">0.904405</td>
 <td style="text-align:center">0.884280</td>
 <td style="text-align:center">0.934912</td>
 </tr>
 <tr>
-<td style="text-align:center">12</td>
+<td style="text-align:center">13</td>
 <td style="text-align:center">0.869908</td>
 <td style="text-align:center">0.904403</td>
 <td style="text-align:center">0.883964</td>
@@ -931,34 +946,30 @@ Codes uploaded on <a target="_blank" rel="noopener" href="https://github.com/che
 </tbody>
 </table>
 <p>The trends forecasting results of “COVID” are commonly better than that of the other keyword “vaccine” across all the models. We infer that the features used for predicting are more appropriate for the keyword “COVID”, since the data for the COVID-19 is richer than that of the vaccinations in our feature selections.</p>
-<h2 id="5-references"><a class="markdownIt-Anchor" href="#5-references"></a> 5. References</h2>
-<hr class="footnotes-sep">
-<section class="footnotes">
-<ol class="footnotes-list">
-<li id="fn1" class="footnote-item"><p>Maleki, M., Mahmoudi, M.R., Wraith, D. and Pho, K.H., 2020. Time series modelling to forecast the confirmed and recovered cases of COVID-19. Travel medicine and infectious disease, 37, p.101742. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn2" class="footnote-item"><p>Wang, L., Zhou, Y., He, J., Zhu, B., Wang, F., Tang, L., Kleinsasser, M., Barker, D., Eisenberg, M.C. and Song, P.X., 2020. An epidemiological forecast model and software assessing interventions on the COVID-19 epidemic in China. Journal of Data Science, 18(3), pp.409-432. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn3" class="footnote-item"><p>Ferstad, J.O., Gu, A.J., Lee, R.Y., Thapa, I., Shin, A.Y., Salomon, J.A., Glynn, P., Shah, N.H., Milstein, A., Schulman, K. and Scheinker, D., 2020. A model to forecast regional demand for COVID-19 related hospital beds. medRxiv. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn4" class="footnote-item"><p>Dean, N.E., y Piontti, A.P., Madewell, Z.J., Cummings, D.A., Hitchings, M.D., Joshi, K., Kahn, R., Vespignani, A., Halloran, M.E. and Longini Jr, I.M., 2020. Ensemble forecast modeling for the design of COVID-19 vaccine efficacy trials. Vaccine, 38(46), pp.7213-7216. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn5" class="footnote-item"><p>Hochreiter, S. and Schmidhuber, J., 1997. Long short-term memory. Neural computation, 9(8), pp.1735-1780. <a href="#fnref5" class="footnote-backref">↩︎</a> <a href="#fnref5:1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn6" class="footnote-item"><p>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, L. and Polosukhin, I., 2017. Attention is all you need. arXiv preprint arXiv:1706.03762. <a href="#fnref6" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn7" class="footnote-item"><p>Linka, K., Goriely, A. and Kuhl, E., 2021. Global and local mobility as a barometer for COVID-19 dynamics. Biomechanics and modeling in mechanobiology, pp.1-19. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn8" class="footnote-item"><p>Hinton, G.E., Srivastava, N., Krizhevsky, A., Sutskever, I. and Salakhutdinov, R.R., 2012. Improving neural networks by preventing co-adaptation of feature detectors. arXiv preprint arXiv:1207.0580. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn9" class="footnote-item"><p>Bahdanau, D., Cho, K. and Bengio, Y., 2014. Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473. <a href="#fnref9" class="footnote-backref">↩︎</a> <a href="#fnref9:1" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn10" class="footnote-item"><p>Frazier, P.I., 2018. A tutorial on Bayesian optimization. arXiv preprint arXiv:1807.02811. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
-</li>
-<li id="fn11" class="footnote-item"><p>Smith, L.N., 2017, March. Cyclical learning rates for training neural networks. In 2017 IEEE winter conference on applications of computer vision (WACV) (pp. 464-472). IEEE. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
-</li>
+<h2 id="5-conclusion"><a class="markdownIt-Anchor" href="#5-conclusion"></a> 5. Conclusion</h2>
+<p>In this assignment, we .</p>
+<h2 id="6-references"><a class="markdownIt-Anchor" href="#6-references"></a> 6. References</h2>
+<ol>
+<li>Maleki, M., Mahmoudi, M.R., Wraith, D. and Pho, K.H., 2020. Time series modelling to forecast the confirmed and recovered cases of COVID-19. Travel medicine and infectious disease, 37, p.101742.</li>
+<li>Wang, L., Zhou, Y., He, J., Zhu, B., Wang, F., Tang, L., Kleinsasser, M., Barker, D., Eisenberg, M.C. and Song, P.X., 2020. An epidemiological forecast model and software assessing interventions on the COVID-19 epidemic in China. Journal of Data Science, 18(3), pp.409-432.</li>
+<li>Ferstad, J.O., Gu, A.J., Lee, R.Y., Thapa, I., Shin, A.Y., Salomon, J.A., Glynn, P., Shah, N.H., Milstein, A., Schulman, K. and Scheinker, D., 2020. A model to forecast regional demand for COVID-19 related hospital beds. medRxiv.</li>
+<li>Dean, N.E., y Piontti, A.P., Madewell, Z.J., Cummings, D.A., Hitchings, M.D., Joshi, K., Kahn, R., Vespignani, A., Halloran, M.E. and Longini Jr, I.M., 2020. Ensemble forecast modeling for the design of COVID-19 vaccine efficacy trials. Vaccine, 38(46), pp.7213-7216.</li>
+<li>Hochreiter, S. and Schmidhuber, J., 1997. Long short-term memory. Neural computation, 9(8), pp.1735-1780.</li>
+<li>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, L. and Polosukhin, I., 2017. Attention is all you need. arXiv preprint arXiv:1706.03762.</li>
+<li>Linka, K., Goriely, A. and Kuhl, E., 2021. Global and local mobility as a barometer for COVID-19 dynamics. Biomechanics and modeling in mechanobiology, pp.1-19.</li>
+<li>Hinton, G.E., Srivastava, N., Krizhevsky, A., Sutskever, I. and Salakhutdinov, R.R., 2012. Improving neural networks by preventing co-adaptation of feature detectors. arXiv preprint arXiv:1207.0580.</li>
+<li>Bahdanau, D., Cho, K. and Bengio, Y., 2014. Neural machine translation by jointly learning to align and translate. arXiv preprint arXiv:1409.0473.</li>
+<li>Snoek, J., Larochelle, H. and Adams, R.P., 2012. Practical bayesian optimization of machine learning algorithms. arXiv preprint arXiv:1206.2944.</li>
+<li>Mockus, J., 2012. Bayesian approach to global optimization: theory and applications (Vol. 37). Springer Science &amp; Business Media.</li>
+<li>Frazier, P.I., 2018. A tutorial on Bayesian optimization. arXiv preprint arXiv:1807.02811.</li>
+<li>Lu, L., Shin, Y., Su, Y. and Karniadakis, G.E., 2019. Dying relu and initialization: Theory and numerical examples. arXiv preprint arXiv:1903.06733.</li>
+<li>Smith, L.N., 2017, March. Cyclical learning rates for training neural networks. In 2017 IEEE winter conference on applications of computer vision (WACV) (pp. 464-472). IEEE.</li>
 </ol>
-</section>
+<h2 id="7-appendix"><a class="markdownIt-Anchor" href="#7-appendix"></a> 7. Appendix</h2>
+<p>Codes are also available on <a target="_blank" rel="noopener" href="https://github.com/chenducl/SNS-Assignment-2021">GitHub</a>.</p>
+<figure class="highlight python"><figcaption><span>data.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import necessities</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.preprocessing.sequence <span class="keyword">import</span> TimeseriesGenerator</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dataset</span>():</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, dataset, feature_cols, label_cols, timestep=<span class="number">14</span>, </span></span></span><br><span class="line"><span class="function"><span class="params">                        batch_size=<span class="number">1</span>, test_size=<span class="number">0.03</span></span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Initialize the dataset</span></span><br><span class="line"><span class="string">        :param dataset: Dataframe of the dataset</span></span><br><span class="line"><span class="string">        :param feature_cols: list of feature names,</span></span><br><span class="line"><span class="string">            e.g. [&#x27;dates&#x27;, &#x27;vaccinations&#x27;] means using dates and vaccinations as features</span></span><br><span class="line"><span class="string">        :param label_cols: list of prediction targets,</span></span><br><span class="line"><span class="string">            e.g. [&#x27;confirmed&#x27;] means using confirmed data as labels</span></span><br><span class="line"><span class="string">        :param timestep: timestep in LSTM model</span></span><br><span class="line"><span class="string">        :param test_size: the ratio of test data in the dataset</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        self.dataset = dataset</span><br><span class="line">        self.feature_cols = feature_cols</span><br><span class="line">        self.label_cols = label_cols</span><br><span class="line">        self.timestep = timestep</span><br><span class="line">        self.batch_size = batch_size</span><br><span class="line">        self.test_size = test_size</span><br><span class="line">        <span class="comment"># Normalize the dataset using MinMaxScaler before training</span></span><br><span class="line">        self.scaler = MinMaxScaler(feature_range=(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">        self.dataset.loc[:, dataset.columns != <span class="string">&#x27;dates&#x27;</span>] = self.scaler.fit_transform(dataset.loc[:, dataset.columns != <span class="string">&#x27;dates&#x27;</span>])</span><br><span class="line">        <span class="comment"># Split features and labels</span></span><br><span class="line">        self.features = self.dataset[feature_cols]</span><br><span class="line">        self.labels = self.dataset[label_cols]</span><br><span class="line">        <span class="comment"># Split the dataset</span></span><br><span class="line">        self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(</span><br><span class="line">                self.features, self.labels, test_size=self.test_size, shuffle=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_training_set</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Return the time-series generator used for training</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> TimeseriesGenerator(self.x_train.to_numpy(), self.y_train.to_numpy(),</span><br><span class="line">                length=self.timestep, batch_size=self.batch_size)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_test_set</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Return the time-series generator used for testing</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="comment"># Add overlapping points to test set</span></span><br><span class="line">        x_test = pd.concat([self.x_train[-self.timestep:], self.x_test])</span><br><span class="line">        y_test = pd.concat([self.y_train[-self.timestep:], self.y_test])</span><br><span class="line">        <span class="keyword">return</span> TimeseriesGenerator(x_test.to_numpy(), y_test.to_numpy(),</span><br><span class="line">                length=self.timestep, batch_size=self.batch_size)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_dataset</span>(<span class="params">features, labels</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; Construct the dataset with given features and labels</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="comment"># Reading in the dataset</span></span><br><span class="line">    dataset_csv = pd.read_csv(<span class="string">&#x27;./data/dataset.csv&#x27;</span>, index_col=<span class="number">0</span>)</span><br><span class="line">    dataset_rolling_csv = pd.read_csv(<span class="string">&#x27;./data/dataset_rolling.csv&#x27;</span>, index_col=<span class="number">0</span>)</span><br><span class="line">    dataset = Dataset(dataset_csv, feature_cols=features, label_cols=labels)</span><br><span class="line">    dataset_rolling = Dataset(dataset_rolling_csv, feature_cols=features, label_cols=labels)</span><br><span class="line">    <span class="keyword">return</span> dataset, dataset_rolling</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_dataset_confirmed</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; Construct the dataset with confirmed cases as labels</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> get_dataset(features = [</span><br><span class="line">            <span class="string">&#x27;dates&#x27;</span>, <span class="string">&#x27;people_vaccinated&#x27;</span>, <span class="string">&#x27;mobility&#x27;</span>, <span class="string">&#x27;hosp_patients&#x27;</span>, <span class="string">&#x27;icu_patients&#x27;</span>, <span class="string">&#x27;total_tests&#x27;</span>, <span class="string">&#x27;median_age&#x27;</span>,</span><br><span class="line">        ], labels = [<span class="string">&#x27;confirmed&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_dataset_trends</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; Construct the dataset with search trends as labels</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> get_dataset(features = [</span><br><span class="line">        <span class="string">&#x27;dates&#x27;</span>, <span class="string">&#x27;people_vaccinated&#x27;</span>, <span class="string">&#x27;mobility&#x27;</span>, <span class="string">&#x27;hosp_patients&#x27;</span>, <span class="string">&#x27;icu_patients&#x27;</span>, <span class="string">&#x27;total_tests&#x27;</span>, <span class="string">&#x27;median_age&#x27;</span>,</span><br><span class="line">    ], labels = [</span><br><span class="line">        <span class="string">&#x27;trends_vaccine&#x27;</span>, <span class="string">&#x27;trends_covid&#x27;</span>,</span><br><span class="line">    ])</span><br><span class="line">    <span class="comment"># features = [&#x27;dates&#x27;, &#x27;people_vaccinated&#x27;, &#x27;confirmed&#x27;, &#x27;deaths&#x27;, &#x27;deaths_increment&#x27;, &#x27;total_tests&#x27;, &#x27;median_age&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_dataset_covid</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; Construct the dataset with 3 groups of COVID cases</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> get_dataset(features = [</span><br><span class="line">            <span class="string">&#x27;dates&#x27;</span>, <span class="string">&#x27;people_vaccinated&#x27;</span>, <span class="string">&#x27;mobility&#x27;</span>, <span class="string">&#x27;hosp_patients&#x27;</span>, <span class="string">&#x27;icu_patients&#x27;</span>, <span class="string">&#x27;total_tests&#x27;</span>, <span class="string">&#x27;median_age&#x27;</span>,</span><br><span class="line">        ], labels = [</span><br><span class="line">            <span class="string">&#x27;confirmed&#x27;</span>, <span class="string">&#x27;recovered&#x27;</span>, <span class="string">&#x27;deaths&#x27;</span>,</span><br><span class="line">        ])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>base_model.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import necessities</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> pickle <span class="keyword">as</span> pkl</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> six <span class="keyword">import</span> unichr</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.models <span class="keyword">import</span> load_model</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set plotting style</span></span><br><span class="line">sns.set_style(<span class="string">&#x27;whitegrid&#x27;</span>)</span><br><span class="line">sns.set_palette(<span class="string">&#x27;Set2&#x27;</span>)</span><br><span class="line"></span><br><span class="line">DEFAULT_CONFIGS = &#123;</span><br><span class="line">    <span class="string">&#x27;dataset&#x27;</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">&#x27;model_path&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;output_dim&#x27;</span>: <span class="number">128</span>,</span><br><span class="line">    <span class="string">&#x27;epochs&#x27;</span>: <span class="number">400</span>,</span><br><span class="line">    <span class="string">&#x27;verbose&#x27;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&#x27;loss&#x27;</span>: <span class="string">&#x27;mse&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;optimizer&#x27;</span>: <span class="string">&#x27;adam&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;dropout&#x27;</span>: <span class="number">0.2</span>,</span><br><span class="line">    <span class="string">&#x27;share_attention&#x27;</span>: <span class="literal">False</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseModel</span>():</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; Other models are derived by inheritance from BaseModel.</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, dataset, model_path, output_dim, epochs,</span></span></span><br><span class="line"><span class="function"><span class="params">                 verbose, loss, optimizer, dropout, **args</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Initialize the model parameters</span></span><br><span class="line"><span class="string">        param dataset: dataset Dataframe</span></span><br><span class="line"><span class="string">        param output_dim: output dimension</span></span><br><span class="line"><span class="string">        param epochs: training epochs</span></span><br><span class="line"><span class="string">        param verbose: verbose level of logging</span></span><br><span class="line"><span class="string">        param loss: loss function for training</span></span><br><span class="line"><span class="string">        param optimizer: optimizer for training</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        self.dataset = dataset</span><br><span class="line">        self.model_path = model_path</span><br><span class="line">        self.output_dim = output_dim</span><br><span class="line">        self.epochs = epochs</span><br><span class="line">        self.verbose = verbose</span><br><span class="line">        self.loss = loss</span><br><span class="line">        self.optimizer = optimizer</span><br><span class="line">        self.dropout = dropout</span><br><span class="line">        self.history = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read_model</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Load model from the given path</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        self.model = load_model(self.model_path)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Training</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        training_set = self.dataset.get_training_set()</span><br><span class="line">        self.history = self.model.fit(</span><br><span class="line">            training_set, epochs=self.epochs, verbose=self.verbose)</span><br><span class="line">        <span class="keyword">return</span> self.history</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_model</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Save model and training history (if has) to path</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        self.model.save(self.model_path)</span><br><span class="line">        <span class="keyword">if</span> self.history != <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&#x27;<span class="subst">&#123;self.model_path&#125;</span>/history.pkl&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> history:</span><br><span class="line">                pkl.dump(self.history.history, history)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span>(<span class="params">self, <span class="built_in">input</span></span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Predict results of the given input</span></span><br><span class="line"><span class="string">        param input: timeseries generator of the input series</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> self.model.predict(<span class="built_in">input</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evaluate</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Evaluate and return the loss of the test set</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">return</span> self.model.evaluate(self.dataset.get_test_set())</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plot</span>(<span class="params">self, title=<span class="literal">None</span></span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Plot the training/testing set and model predictions for comparison</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        plt.figure(figsize=(<span class="number">10</span>, <span class="number">8</span>))</span><br><span class="line">        <span class="keyword">if</span> title <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            plt.title(<span class="string">&#x27;Labels and Predictions on &#x27;</span> +</span><br><span class="line">                      <span class="string">&#x27;, &#x27;</span>.join(self.dataset.label_cols))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            plt.title(title)</span><br><span class="line">        len_train = <span class="built_in">len</span>(self.dataset.y_train)</span><br><span class="line">        len_test = <span class="built_in">len</span>(self.dataset.y_test)</span><br><span class="line">        plt.plot(<span class="built_in">range</span>(<span class="number">0</span>, len_train), self.dataset.y_train, label=<span class="string">&#x27;y_train&#x27;</span>)</span><br><span class="line">        plt.plot(<span class="built_in">range</span>(self.dataset.timestep, len_train), self.model.predict(</span><br><span class="line">            self.dataset.get_training_set()), label=<span class="string">&#x27;pred_train&#x27;</span>)</span><br><span class="line">        plt.plot(<span class="built_in">range</span>(len_train, len_train+len_test),</span><br><span class="line">                 self.dataset.y_test, label=<span class="string">&#x27;y_test&#x27;</span>)</span><br><span class="line">        plt.plot(<span class="built_in">range</span>(len_train, len_train+len_test),</span><br><span class="line">                 self.model.predict(self.dataset.get_test_set()), label=<span class="string">&#x27;pred_test&#x27;</span>)</span><br><span class="line">        plt.legend()</span><br><span class="line">        plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><figcaption><span>lstm_model.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Import necessities</span></span><br><span class="line"><span class="comment"># Import necessities</span></span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow.keras.backend <span class="keyword">as</span> K</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.models <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.layers <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> base_model <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set plotting style</span></span><br><span class="line">sns.set_style(<span class="string">&#x27;whitegrid&#x27;</span>)</span><br><span class="line">sns.set_palette(<span class="string">&#x27;Set2&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LSTMModel</span>(<span class="params">BaseModel</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27; LSTM models structures and implementation.</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, dataset=<span class="literal">None</span>, model_path=<span class="string">&#x27;&#x27;</span>, model_type=<span class="string">&#x27;&#x27;</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                        output_dim=<span class="number">200</span>, epochs=<span class="number">400</span>, verbose=<span class="number">1</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                        loss=<span class="string">&#x27;mse&#x27;</span>, optimizer=<span class="string">&#x27;adam&#x27;</span>, dropout=<span class="number">0.03</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                        activation=<span class="string">&#x27;sigmoid&#x27;</span>, share_attention=<span class="literal">False</span>, **args</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Initialize the model parameters</span></span><br><span class="line"><span class="string">        param dataset: Dataset object</span></span><br><span class="line"><span class="string">        param output_dim: output dimension</span></span><br><span class="line"><span class="string">        param epochs: training epochs</span></span><br><span class="line"><span class="string">        param verbose: verbose level of logging</span></span><br><span class="line"><span class="string">        param loss: loss function for training</span></span><br><span class="line"><span class="string">        param optimizer: optimizer for training</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">super</span>(LSTMModel, self).__init__(dataset, model_path,</span><br><span class="line">                                        output_dim, epochs, verbose,</span><br><span class="line">                                        loss, optimizer, dropout, **args)</span><br><span class="line">        self.model_type = model_type</span><br><span class="line">        self.share_attention = share_attention</span><br><span class="line">        self.activation = activation</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">attention_block</span>(<span class="params">self, <span class="built_in">input</span></span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Attention block</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="comment"># (batch_size, time_steps, input_dim)</span></span><br><span class="line">        input_dim = <span class="built_in">int</span>(<span class="built_in">input</span>.shape[<span class="number">2</span>])</span><br><span class="line">        <span class="comment"># Transpose with Permute</span></span><br><span class="line">        a = Permute((<span class="number">2</span>, <span class="number">1</span>))(<span class="built_in">input</span>)</span><br><span class="line">        a = Reshape((input_dim, self.dataset.timestep))(a)</span><br><span class="line">        a = Dense(self.dataset.timestep, activation=<span class="string">&#x27;softmax&#x27;</span>)(a)</span><br><span class="line">        <span class="keyword">if</span> self.share_attention:</span><br><span class="line">            a = Lambda(<span class="keyword">lambda</span> x: K.mean(x, axis=<span class="number">1</span>), name=<span class="string">&#x27;dim_reduction&#x27;</span>)(a)</span><br><span class="line">            a = RepeatVector(input_dim)(a)</span><br><span class="line">        a_probs = Permute((<span class="number">2</span>, <span class="number">1</span>), name=<span class="string">&#x27;attention_vec&#x27;</span>)(a)</span><br><span class="line">        <span class="keyword">return</span> Multiply()([<span class="built_in">input</span>, a_probs])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">construct_single_layer_lstm</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Create a single-layer LSTM model</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        self.model = Sequential()</span><br><span class="line">        self.model.add(LSTM(units=self.output_dim, input_shape=(self.dataset.timestep, <span class="built_in">len</span>(self.dataset.feature_cols))))</span><br><span class="line">        <span class="comment"># self.model.add(Dropout(self.dropout))</span></span><br><span class="line">        self.model.add(Dense(units=<span class="built_in">len</span>(self.dataset.label_cols)))</span><br><span class="line">        <span class="comment"># Activation Functions</span></span><br><span class="line">        <span class="keyword">if</span> self.activation != <span class="literal">None</span>:</span><br><span class="line">            self.model.add(Activation(self.activation))</span><br><span class="line">        <span class="comment"># MSE loss and adam optimizer</span></span><br><span class="line">        self.model.<span class="built_in">compile</span>(loss=self.loss, optimizer=self.optimizer)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">construct_multi_layer_lstm</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Create a multi-layer LSTM model</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        self.model = Sequential()</span><br><span class="line">        <span class="comment"># Three-layer LSTM with Dropout</span></span><br><span class="line">        self.model.add(LSTM(units=self.output_dim, return_sequences=<span class="literal">True</span>, input_shape=(self.dataset.timestep, <span class="built_in">len</span>(self.dataset.feature_cols))))</span><br><span class="line">        self.model.add(Dropout(self.dropout))</span><br><span class="line">        self.model.add(LSTM(units=self.output_dim, return_sequences=<span class="literal">True</span>))</span><br><span class="line">        self.model.add(Dropout(self.dropout))</span><br><span class="line">        self.model.add(LSTM(units=self.output_dim, return_sequences=<span class="literal">False</span>))</span><br><span class="line">        self.model.add(Dropout(self.dropout))</span><br><span class="line">        <span class="comment"># Dense Layer</span></span><br><span class="line">        self.model.add(Dense(units=<span class="built_in">len</span>(self.dataset.label_cols)))</span><br><span class="line">        <span class="comment"># Activation Functions</span></span><br><span class="line">        <span class="keyword">if</span> self.activation != <span class="literal">None</span>:</span><br><span class="line">            self.model.add(Activation(self.activation))</span><br><span class="line">        <span class="comment"># MSE loss and adam optimizer</span></span><br><span class="line">        self.model.<span class="built_in">compile</span>(loss=self.loss, optimizer=self.optimizer)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">construct_attention_lstm</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Create a single-layer LSTM with attention</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        inputs = Input(shape=(self.dataset.timestep, <span class="built_in">len</span>(self.dataset.feature_cols)))</span><br><span class="line">        attention = self.attention_block(inputs)</span><br><span class="line">        attention = LSTM(units=self.output_dim, return_sequences=<span class="literal">False</span>)(attention)</span><br><span class="line">        output = Dense(<span class="built_in">len</span>(self.dataset.label_cols), activation=self.activation)(attention)</span><br><span class="line">        self.model = Model(inputs=[inputs], outputs=output)</span><br><span class="line">        <span class="comment"># MSE loss and adam optimizer</span></span><br><span class="line">        self.model.<span class="built_in">compile</span>(loss=self.loss, optimizer=self.optimizer)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">construct_lstm_attention</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Create a single-layer LSTM with attention</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="comment"># Inputs Layer</span></span><br><span class="line">        inputs = Input(shape=(self.dataset.timestep, <span class="built_in">len</span>(self.dataset.feature_cols)))</span><br><span class="line">        <span class="comment"># Single LSTM Layer</span></span><br><span class="line">        lstm = LSTM(units=self.output_dim, return_sequences=<span class="literal">True</span>)(inputs)</span><br><span class="line">        <span class="comment"># Attention Block</span></span><br><span class="line">        attention = self.attention_block(lstm)</span><br><span class="line">        <span class="comment"># Flatten to connect with Dense Layer</span></span><br><span class="line">        attention = Flatten()(attention)</span><br><span class="line">        output = Dense(<span class="built_in">len</span>(self.dataset.label_cols), activation=self.activation)(attention)</span><br><span class="line">        self.model = Model(inputs=[inputs], outputs=output)</span><br><span class="line">        <span class="comment"># MSE loss and adam optimizer</span></span><br><span class="line">        self.model.<span class="built_in">compile</span>(loss=self.loss, optimizer=self.optimizer)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_acc</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Obtain the accuracy on testing set</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        acc_dict = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i, label <span class="keyword">in</span> <span class="built_in">enumerate</span>(self.dataset.label_cols):</span><br><span class="line">            y_pred = self.model.predict(self.dataset.get_test_set())</span><br><span class="line">            y = self.dataset.y_test[label].values</span><br><span class="line">            acc_dict[label] = <span class="number">1</span> - <span class="built_in">abs</span>(y_pred[:,i].reshape(-<span class="number">1</span>) - y) / y</span><br><span class="line">        acc = pd.DataFrame(acc_dict)</span><br><span class="line">        <span class="keyword">return</span> acc</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">construct_model</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27; Build model from scratch</span></span><br><span class="line"><span class="string">            - single_layer_lstm</span></span><br><span class="line"><span class="string">            - multi_layer_lstm</span></span><br><span class="line"><span class="string">            - attention_lstm</span></span><br><span class="line"><span class="string">            - lstm_attention</span></span><br><span class="line"><span class="string">            - transformer</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> self.model_type <span class="keyword">is</span> <span class="string">&#x27;single_layer_lstm&#x27;</span>:</span><br><span class="line">            self.construct_single_layer_lstm()</span><br><span class="line">        <span class="keyword">elif</span> self.model_type <span class="keyword">is</span> <span class="string">&#x27;multi_layer_lstm&#x27;</span>:</span><br><span class="line">            self.construct_multi_layer_lstm()</span><br><span class="line">        <span class="keyword">elif</span> self.model_type <span class="keyword">is</span> <span class="string">&#x27;attention_lstm&#x27;</span>:</span><br><span class="line">            self.construct_attention_lstm()</span><br><span class="line">        <span class="keyword">elif</span> self.model_type <span class="keyword">is</span> <span class="string">&#x27;lstm_attention&#x27;</span>:</span><br><span class="line">            self.construct_lstm_attention()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span>(<span class="string">f&#x27;model_type <span class="subst">&#123;self.model_type&#125;</span> Not Implemented!&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
